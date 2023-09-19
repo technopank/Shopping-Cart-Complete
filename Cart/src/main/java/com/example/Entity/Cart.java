@@ -12,10 +12,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name="Cart")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Cart {
 	
 	@Id
@@ -27,7 +23,7 @@ public class Cart {
 	
 	private double price;
 	
-	@Column(length=10000)
+	@Column(length=500)
 	private String image;
 	
 	public long getId() {

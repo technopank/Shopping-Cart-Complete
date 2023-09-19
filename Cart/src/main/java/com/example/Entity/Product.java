@@ -16,10 +16,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "Product")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Product {
 	
 	@Id
@@ -32,7 +28,7 @@ public class Product {
 	
 	private double price;
 	
-	@Column(length=10000)
+	@Column(length=500)
 	private String image;
 
 	public Product(long id, String name, String rating, double price, String image) {

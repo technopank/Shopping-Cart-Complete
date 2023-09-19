@@ -18,6 +18,7 @@ import com.example.Entity.Cart;
 import com.example.Entity.Product;
 import com.example.Repository.CartRepository;
 import com.example.Repository.ProductRepository;
+import com.example.Service.CartService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,48 +28,28 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CartController {
 	
-	
+
 	@Autowired
-	private ProductRepository prodRepo;
-	
-	@Autowired
-	private CartRepository cartRepo;
+	private CartService cartService;
 	
 	
 	@PostMapping("/{id}")
 	public ResponseEntity<String> getProduct(@PathVariable long id) {
-		
-		Optional<Product> productOptional = prodRepo.findById(id);
-        if (!productOptional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        Product p = productOptional.get();
-		
-		Cart c = new Cart(); 
-		
-		c.setId(p.getId());
-		c.setImage(p.getImage());
-		c.setPrice(p.getPrice());
-		c.setName(p.getName());
-		c.setRating(p.getRating());
-		
-		cartRepo.save(c);
-		
+		cartService.addTocart(id);
 		return new ResponseEntity<String>("Product added to cart",HttpStatus.OK);
 	}
 	
 	
 	@GetMapping("/cartProducts")
 	public List<Cart>getProductFromCart() {
-		return cartRepo.findAll();
+		return cartService.getProductFromCart();
 	}
 		
 	
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String>deleteFromCart(@PathVariable long id) {
-		cartRepo.deleteById(id);
+		cartService.deleteFromCart(id);
 		return new ResponseEntity<String>("Product has been removed from cart",HttpStatus.OK);
 		
 	}
