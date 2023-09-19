@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductList from './Components/ProductList';
 import Cart from './Components/Cart';
 import AddProduct from './Components/AddProduct';
@@ -16,13 +16,13 @@ function App() {
 
   return (
     <div>
-     <BrowserRouter>
-            <Routes>
-                <Route exact path='/' element = {<ProductList />} />
-                <Route path='/Cart' element = {<Cart cart={cart} removeFromCart={removeFromCart}/>} />
-                <Route exact path='/addproduct' element = {<AddProduct/>} />
-            </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<ProductList />} />
+          <Route path='/Cart' element={<Cart cart={cart} removeFromCart={removeFromCart} />} />
+          <Route exact path='/addproduct' element={<AddProduct />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,14 +1,10 @@
 import React from 'react';
 import { Container, Col, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import API from '../Api';
 
 const CartPage = () => {
-  // const handleRemoveFromCart = (product) => {
-  //   removeFromCart(product);
-  // };
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -46,20 +42,21 @@ const CartPage = () => {
   return (
     <div className="p-4">
       <Container className="custom-container">
-        <h1 className="text-center">
-          <Link to="/">Shopping Cart</Link>
+        <h1 className="h1">
+          Shopping Cart
         </h1>
+        <a className="btn btn-primary" href="/">Home</a>
         {cartMessage}
         {cart.map((cartItem) => (
           <Col key={cartItem.id}>
             <Card>
-            <Card.Title>{cartItem.name}</Card.Title>
+              <Card.Title>{cartItem.name}</Card.Title>
               <Card.Body>
-              <Card.Img variant="top" src={cartItem.image} style={{ width: '100px', height: '100px' }} />
-              <Card.Text>Price: ${cartItem.price}</Card.Text>
+                <Card.Img variant="top" src={cartItem.image} style={{ width: '100px', height: '100px' }} />
+                <Card.Text>Price: ${cartItem.price}</Card.Text>
                 <Card.Text>Rating: {cartItem.rating}</Card.Text>
                 <div className="product-button">
-                <button onClick={() => handleRemoveFromCart(cartItem.id)}>Remove</button>
+                  <button onClick={() => handleRemoveFromCart(cartItem.id)}>Remove</button>
                 </div>
               </Card.Body>
             </Card>

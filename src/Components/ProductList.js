@@ -9,7 +9,6 @@ import '../App.css';
 const ProductList = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
-  // const [cart, setCart] = useState([]);
 
   useEffect(() => {
     axios.get(`${API}/products/`)
@@ -26,7 +25,7 @@ const ProductList = ({ addToCart }) => {
       .post(`${API}/cart/${id}`)
       .then((response) => {
         navigate('/cart');
-       alert('Product added to cart');
+        alert('Product added to cart');
       })
       .catch((error) => {
         console.error('Error adding product to cart:', error);

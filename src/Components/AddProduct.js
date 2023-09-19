@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import API from '../Api';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../App.css';
 
 const AddProduct = () => {
     const [inputData, setInputData] = useState({ name: '', rating: '', price: '', image: '' })
@@ -21,8 +22,9 @@ const AddProduct = () => {
 
     return (
         <Container>
-            <h1>Add New Product</h1>
-            <form encType="multipart/form-data">
+            <h1 className='h1'>Add New Product</h1>
+            <a className="btn btn-primary" href="/">Home</a>
+            <form>
             <div className='d-flex w-100 vh-100 justify-content-center align-items-center'>
                 <div className='w-50 border bg-light p-5'>
                     <div>
